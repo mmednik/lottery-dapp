@@ -2,7 +2,10 @@ import './App.css';
 import { useState } from 'react';
 import { ethers } from 'ethers'
 import QuiniCoin from './artifacts/contracts/QuiniCoin.sol/QuiniCoin.json'
-import { ChakraProvider, Stack, Button } from "@chakra-ui/react"
+import { ChakraProvider, Flex, Center, Heading, Container, VStack, Button, IconButton, Input } from "@chakra-ui/react"
+import { AddIcon, StarIcon } from '@chakra-ui/icons'
+import TokenBalance from './components/TokenBalance'
+import BuyToken from './components/BuyToken'
 
 // Update with the contract address logged out to the CLI when it was deployed 
 const quiniCoinAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
@@ -41,21 +44,35 @@ function App() {
     }
   }
 
+
   return (
     <ChakraProvider>
       <div className="App">
+        <Container>
         <header className="App-header">
-          <h1>QuiniCoin</h1>
+          <Center>
+            <StarIcon />
+            <Heading color="gray.700" padding="8">QuiniCoin</Heading>
+            <StarIcon />
+          </Center>
         </header>
         <main className="App-main">
-          <Stack spacing={4} direction="column" align="center">
-            <Button colorScheme="blue" onClick={fetchBalance}>Tokens balance</Button>
-            <Button colorScheme="blue" onClick={generateTokens}>Generate tokens</Button>
-            <input onChange={e => generateTokensValue(e.target.value)} placeholder="Tokens amount" />
-          </Stack>
+          <VStack spacing={4} align="stretch">
+
+            <TokenBalance />
+
+            <Flex>
+              <Input onChange={e => generateTokensValue(e.target.value)} placeholder="Amount of tokens to generate" />
+              <IconButton icon={<AddIcon />} colorScheme="orange" onClick={generateTokens} aria-label="Generate tokens" />
+            </Flex>
+
+            <BuyToken />
+
+          </VStack>
         </main>
         <footer className="App-footer">
         </footer>
+        </Container>
       </div>
     </ChakraProvider>
   );
