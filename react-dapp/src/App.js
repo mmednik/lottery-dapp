@@ -4,7 +4,8 @@ import { ethers } from 'ethers'
 import QuiniCoin from './artifacts/contracts/QuiniCoin.sol/QuiniCoin.json'
 import { ChakraProvider, Flex, Center, Heading, Container, VStack, Button, IconButton, Input } from "@chakra-ui/react"
 import { AddIcon, StarIcon } from '@chakra-ui/icons'
-import TokenBalance from './components/TokenBalance'
+import Balance from './components/Balance'
+import UpdateBalance from './components/UpdateBalance'
 import BuyToken from './components/BuyToken'
 
 // Update with the contract address logged out to the CLI when it was deployed 
@@ -51,15 +52,17 @@ function App() {
         <Container>
         <header className="App-header">
           <Center>
-            <StarIcon />
+            <StarIcon color="gray.700" />
             <Heading color="gray.700" padding="8">QuiniCoin</Heading>
-            <StarIcon />
+            <StarIcon color="gray.700" />
           </Center>
         </header>
         <main className="App-main">
           <VStack spacing={4} align="stretch">
 
-            <TokenBalance />
+            <Balance />
+
+            <UpdateBalance />
 
             <Flex>
               <Input onChange={e => generateTokensValue(e.target.value)} placeholder="Amount of tokens to generate" />
