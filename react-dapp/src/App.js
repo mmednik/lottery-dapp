@@ -1,5 +1,5 @@
 import './App.css';
-import { ChakraProvider, Flex, Center, Heading, Container, VStack, Button, IconButton, Input } from "@chakra-ui/react"
+import { ChakraProvider, Center, Heading, Container, VStack } from "@chakra-ui/react"
 import { StarIcon } from '@chakra-ui/icons'
 import GenerateTokens from './components/GenerateTokens'
 import Balance from './components/Balance'
